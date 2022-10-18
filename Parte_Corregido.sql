@@ -1,4 +1,4 @@
-DROP database partediario;
+DROP database IF EXISTS partediario;
 CREATE DATABASE partediario;
 USE partediario;
 
@@ -13,15 +13,6 @@ DROP TABLE if exists Horarios;
 DROP TABLE if exists Titularidad;
 
 
-CREATE TABLE Alumno (
-dni int not null,
-apellido varchar (255) not null,
-nombre varchar(255) not null,
-curso_key int not null,
-foreign key (curso_key) references Curso(id),
-primary key (dni)
-);
-
 CREATE TABLE Curso (
 id int auto_increment not null ,
 año int not null,
@@ -31,6 +22,15 @@ primary key (id)
 ); 
 
 ALTER TABLE Curso ADD UNIQUE (año, division, ciclolectivo);
+
+CREATE TABLE Alumno (
+dni int not null,
+apellido varchar (255) not null,
+nombre varchar(255) not null,
+curso_key int not null,
+foreign key (curso_key) references Curso(id),
+primary key (dni)
+);
 
 CREATE TABLE InasistenciaAlumno (
 fecha date not null,
@@ -72,6 +72,15 @@ Foreign key (espaciocurricular_key) references EspacioCurricular(id),
 primary key (id)
 );
 
+CREATE TABLE Horarios (
+id int auto_increment not null,
+espaciocurricular_key int not null,
+dia int not null,
+hora time not null,
+foreign key (espaciocurricular_key) references EspacioCurricular(id),
+primary key (id)
+);
+
 CREATE TABLE AsistenciaProfesor (
 fecha date not null,
 horarios_key int not null,
@@ -91,16 +100,3 @@ foreign key (profesor) references Profesor(dni),
 foreign key (espaciocurricular_key) references EspacioCurricular(id),
 primary key (profesor, espaciocurricular_key)
 );
-
-CREATE TABLE Horarios (
-id int auto_increment not null,
-espaciocurricular_key int not null,
-dia date not null,
-hora time not null,
-foreign key (espaciocurricular_key) references EspacioCurricular(id),
-primary key (id)
-);
-
-
-
-
