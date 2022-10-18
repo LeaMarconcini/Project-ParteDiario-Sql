@@ -76,20 +76,9 @@ CREATE TABLE Horarios (
 id int auto_increment not null,
 espaciocurricular_key int not null,
 dia int not null,
-hora time not null,
+hora int not null,
 foreign key (espaciocurricular_key) references EspacioCurricular(id),
 primary key (id)
-);
-
-CREATE TABLE AsistenciaProfesor (
-fecha date not null,
-horarios_key int not null,
-espaciocurricular_key int not null,
-profesor_key int not null,
-Foreign key (profesor_key) references Profesor(dni),
-Foreign key (espaciocurricular_key) references EspacioCurricular(id),
-Foreign key (horarios_key) references Horarios(id),
-primary key (fecha, horarios_key)
 );
 
 CREATE TABLE Titularidad (
@@ -100,3 +89,17 @@ foreign key (profesor) references Profesor(dni),
 foreign key (espaciocurricular_key) references EspacioCurricular(id),
 primary key (profesor, espaciocurricular_key)
 );
+
+CREATE TABLE AsistenciaProfesor (
+fecha date not null,
+hora_key int not null,
+profesor_key int not null,
+espaciocurricular_key int not null,
+Foreign key (hora_key) references Horarios(id),
+Foreign key (profesor_key) references titularidad(profesor),
+Foreign key (espaciocurricular_key) references espaciocurricular(id),
+primary key (fecha, hora_key)
+);
+
+ALTER TABLE AsistenciaProfesor ADD UNIQUE (fecha, hora_key, profesor_key);
+-- NO PUEDE ASISTIR UN MISMO PROFESOR A MATERIAS DISTINTAS EN LA MISMA HORA

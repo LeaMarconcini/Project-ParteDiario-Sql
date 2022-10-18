@@ -88,9 +88,28 @@ VALUES (3, 3, 3);
 INSERT INTO horarios (espaciocurricular_key, dia, hora)
 VALUES (3, 3, 4);
 
--- DEVUELVE TODAS LAS MATERIAS TITULARES DE UN PROFESOR
-SELECT * FROM espaciocurricular WHERE id IN 
-(SELECT espaciocurricular_key FROM titularidad WHERE profesor=18650995);
+-- ASISTENCIAS PEREYRA
 
-SELECT * FROM profesor WHERE dni IN 
-(SELECT profesor FROM titularidad WHERE espaciocurricular_key=3 AND titular=1);
+INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key , profesor_key)
+VALUES ("2022-10-18", 1, 1,18650995);
+
+INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key, profesor_key)
+VALUES ("2022-10-18", 2, 1,18650995);
+
+INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key, profesor_key)
+VALUES ("2022-10-19", 3, 2,18650995);
+
+-- ASITENCIAS GREGORIO
+
+INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key, profesor_key)
+VALUES ("2022-10-19", 4, 2,40184370);
+
+-- ASISTENCIAS FORTU
+
+-- ASISTENCIAS BAUTI
+
+
+-- ASISTENCIAS KOVACH
+
+INSERT INTO inasistenciaalumno (fecha, alumno, inasistenciaTMañana, inasistenciaTtarde)
+VALUES ("2022-10-18", 46296060, 1, 0);
