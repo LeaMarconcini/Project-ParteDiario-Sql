@@ -21,5 +21,8 @@ INNER JOIN profesor ON profesor.dni=asistenciaprofesor.profesor_key;
 -- ¿X profesor vino en Y fecha?
 
 SELECT * FROM asistenciaprofesor 
-WHERE fecha = "2022-10-19" AND profesor_key = 40184370
+WHERE fecha = "2022-10-19" AND profesor_key = 40184370;
+
+SELECT * from profesor
+where dni = 21591208;
 

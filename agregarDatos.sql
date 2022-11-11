@@ -88,21 +88,35 @@ VALUES (3, 3, 3);
 INSERT INTO horarios (espaciocurricular_key, dia, hora)
 VALUES (3, 3, 4);
 
+-- Parte
+INSERT INTO parte (fecha, curso)
+VALUES ("2022-10-18",1);
+
+INSERT INTO parte (fecha, curso)
+VALUES ("2022-10-19",1);
+
+INSERT INTO parte (fecha, curso)
+VALUES ("2022-10-18",2);
+
+INSERT INTO parte (fecha, curso)
+VALUES ("2022-10-19",2);
+
+
 -- ASISTENCIAS PEREYRA
 
-INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key , profesor_key)
-VALUES ("2022-10-18", 1, 1,18650995);
+INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key , profesor_key, curso)
+VALUES ("2022-10-18", 1, 1,18650995, 1);
 
-INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key, profesor_key)
-VALUES ("2022-10-18", 2, 1,18650995);
+INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key, profesor_key, curso)
+VALUES ("2022-10-18", 2, 1,18650995, 1);
 
-INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key, profesor_key)
-VALUES ("2022-10-19", 3, 2,18650995);
+INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key, profesor_key, curso)
+VALUES ("2022-10-19", 3, 2,18650995, 2);
 
 -- ASITENCIAS GREGORIO
 
-INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key, profesor_key)
-VALUES ("2022-10-19", 4, 2,40184370);
+INSERT INTO asistenciaprofesor (fecha, hora_key, espaciocurricular_key, profesor_key, curso)
+VALUES ("2022-10-19", 4, 2,40184370, 2);
 
 -- ASISTENCIAS FORTU
 
@@ -111,5 +125,21 @@ VALUES ("2022-10-19", 4, 2,40184370);
 
 -- ASISTENCIAS KOVACH
 
-INSERT INTO inasistenciaalumno (fecha, alumno, inasistenciaTMañana, inasistenciaTtarde)
-VALUES ("2022-10-18", 46296060, 1, 0);
+INSERT INTO inasistenciaalumno (fecha, alumno, inasistenciaTMañana, inasistenciaTtarde, curso)
+VALUES ("2022-10-18", 46296060, 1, 0, 1);
+
+INSERT INTO parte (fecha, curso)
+VALUES ("2022-11-02", 1);
+
+INSERT INTO observaciones (alumno, fecha, comunicado, profesor_key, espaciocurricular_key, curso)
+VALUES (1, "2022-11-02", "No pueden cargar el parte", 18650995, 1, 1);
+
+INSERT INTO profesor (dni, apellido, nombre)
+values (21591208, "Fior", "Eber");
+
+UPDATE observaciones 
+SET profesor_key = 21591208
+WHERE id=1;
+
+
+
